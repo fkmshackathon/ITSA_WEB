@@ -8,14 +8,14 @@ export default function Navbar({ activePage, setActivePage, onOpenMetaSummit }) 
 
   useEffect(() => {
     const handleScroll = () => {
-      // Toggle sticky shadow
-      if (window.scrollY > 20) {
+      // Toggle expanded vs compact mode with smooth threshold
+      if (window.scrollY > 35) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
 
-      // Calculate scroll progress percentage
+      // Calculate scroll progress percentage for subtle top gold indicator
       const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
       if (totalScroll > 0) {
         const currentProgress = (window.scrollY / totalScroll) * 100;
@@ -27,15 +27,15 @@ export default function Navbar({ activePage, setActivePage, onOpenMetaSummit }) 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Clean navigation list: HOME, ABOUT, TEAM, FACULTY, EVENTS, META SUMMIT, GALLERY (no Contact, no Get Involved)
+  // Ordered strictly: Home, About, Team, Faculty, Events, Gallery, META SUMMIT (Special button)
   const navLinks = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'team', label: 'Team' },
     { id: 'faculty', label: 'Faculty' },
     { id: 'events', label: 'Events' },
-    { id: 'meta-summit', label: 'META SUMMIT', isSpecial: true },
-    { id: 'gallery', label: 'Gallery' }
+    { id: 'gallery', label: 'Gallery' },
+    { id: 'meta-summit', label: 'META SUMMIT', isSpecial: true }
   ];
 
   const handleNavClick = (id) => {
@@ -46,7 +46,7 @@ export default function Navbar({ activePage, setActivePage, onOpenMetaSummit }) 
 
   return (
     <>
-      {/* Scroll Progress Bar at Very Top */}
+      {/* 1. Subtle Scroll Progress Indicator Bar at Very Top */}
       <div className="fixed top-0 inset-x-0 h-[2.5px] bg-transparent z-50 pointer-events-none">
         <div
           className="h-full bg-gradient-to-r from-[#C99A2E] via-[#E5B842] to-[#7D1730] transition-all duration-150 ease-out shadow-gold-glow"
@@ -54,8 +54,8 @@ export default function Navbar({ activePage, setActivePage, onOpenMetaSummit }) 
         ></div>
       </div>
 
-      {/* Top Institutional Notification Banner */}
-      <div className="bg-[#071A3A] text-[#FAF7F0]/85 text-[11px] sm:text-xs py-1.5 px-4 tracking-wide font-medium border-b border-[#C99A2E]/30 select-none z-40 relative">
+      {/* 2. Top Institutional Notification & Accreditation Bar */}
+      <div className="bg-[#071A3A] text-[#FAF7F0]/85 text-[11px] sm:text-xs py-1.5 px-4 tracking-wide font-medium border-b border-[#C99A2E]/30 select-none z-40 relative transition-all duration-300">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <span className="inline-block w-2 h-2 rounded-full bg-[#C99A2E] animate-pulse"></span>
@@ -64,7 +64,10 @@ export default function Navbar({ activePage, setActivePage, onOpenMetaSummit }) 
             <span className="hidden md:inline text-white/80">Shree L. R. Tiwari College of Engineering (Autonomous)</span>
           </div>
           <div className="hidden sm:flex items-center gap-3 text-[11px] text-[#E5B842]/90 font-mono">
-            <span>AICTE Approved</span>
+            <span className="flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              <span>AICTE Approved</span>
+            </span>
             <span className="text-white/30">•</span>
             <span>NAAC & NBA Accredited</span>
             <span className="text-white/30">•</span>
@@ -73,57 +76,80 @@ export default function Navbar({ activePage, setActivePage, onOpenMetaSummit }) 
         </div>
       </div>
 
-      {/* Main Sticky Navbar */}
+      {/* 3. Main Sticky Navbar with Expanded -> Compact Scroll Transformation */}
       <header
-        className={`sticky top-0 z-40 transition-all duration-300 ${
+        className={`sticky top-0 z-40 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           scrolled
-            ? 'bg-[#F5F0E3]/95 backdrop-blur-md shadow-tech-card py-2.5 border-b border-[#E5DDCB]'
-            : 'bg-[#F5F0E3] py-3.5 border-b border-[#E5DDCB]/70'
+            ? 'bg-[#F5F0E3]/95 backdrop-blur-md shadow-tech-card py-2.5 sm:py-3 border-b border-[#E5DDCB]'
+            : 'bg-[#F5F0E3] py-4 sm:py-6 border-b border-[#E5DDCB]/80'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between transition-all duration-500">
           
-          {/* Brand Identity: SLRTCE Seal + ITSA Logo Lockup */}
+          {/* Brand Identity: Dual Official Logos + Institutional Lockup */}
           <div 
-            className="flex items-center gap-3 cursor-pointer group"
+            className="flex items-center gap-3 sm:gap-4 cursor-pointer group select-none"
             onClick={() => handleNavClick('home')}
           >
             {/* ITSA Official Gold Logo */}
-            <div className="relative flex items-center justify-center p-1 rounded-full bg-white/80 border border-[#C8A962]/40 shadow-sm transition-transform duration-300 group-hover:scale-105">
+            <div 
+              className={`relative flex items-center justify-center p-1 rounded-2xl bg-white/90 border border-[#C8A962]/40 shadow-sm transition-all duration-500 group-hover:scale-105 group-hover:shadow-gold-glow ${
+                scrolled ? 'w-10 h-10 sm:w-11 sm:h-11' : 'w-12 h-12 sm:w-14 sm:h-14 p-1.5'
+              }`}
+            >
               <img
                 src="/assets/logos/itsa-logo.png"
                 alt="ITSA Official Logo"
-                className="w-9 h-9 sm:w-10 sm:h-10 object-contain"
+                className="w-full h-full object-contain filter drop-shadow-sm"
               />
             </div>
 
             {/* Separator Line */}
-            <div className="h-7 w-px bg-[#071A3A]/20"></div>
+            <div className={`w-px bg-[#071A3A]/20 transition-all duration-500 ${scrolled ? 'h-7 sm:h-8' : 'h-9 sm:h-11'}`}></div>
 
             {/* SLRTCE College Official Logo */}
-            <div className="relative flex items-center justify-center">
+            <div 
+              className={`relative flex items-center justify-center transition-all duration-500 group-hover:scale-105 ${
+                scrolled ? 'w-8 h-8 sm:w-9 sm:h-9' : 'w-10 h-10 sm:w-12 sm:h-12'
+              }`}
+            >
               <img
                 src="/assets/logos/slrtce-logo.png"
                 alt="SLRTCE College Logo"
-                className="w-8 h-8 sm:w-9 sm:h-9 object-contain transition-transform duration-300 group-hover:scale-105"
+                className="w-full h-full object-contain"
               />
             </div>
 
-            {/* Text Lockup */}
-            <div className="flex flex-col">
+            {/* Text Lockup with Dynamic Proportions */}
+            <div className="flex flex-col justify-center">
               <div className="flex items-center gap-1.5">
-                <span className="font-heading font-extrabold text-base sm:text-lg tracking-tight text-[#071A3A]">
+                <span 
+                  className={`font-heading font-extrabold tracking-tight text-[#071A3A] transition-all duration-500 ${
+                    scrolled ? 'text-base sm:text-lg' : 'text-lg sm:text-2xl'
+                  }`}
+                >
                   ITSA SLRTCE
                 </span>
+                {!scrolled && (
+                  <span className="hidden xl:inline-block px-2 py-0.5 rounded-md bg-[#FAF4E6] border border-[#C8A962]/40 text-[10px] font-mono font-bold text-[#9E741B]">
+                    NODE 01
+                  </span>
+                )}
               </div>
-              <span className="text-[10px] sm:text-[11px] text-[#5A6B85] hidden sm:block tracking-tight font-medium">
+              <span 
+                className={`text-[#5A6B85] font-medium tracking-tight transition-all duration-500 ${
+                  scrolled 
+                    ? 'text-[10px] sm:text-[11px] hidden sm:block' 
+                    : 'text-[11px] sm:text-xs block'
+                }`}
+              >
                 Information Technology Students Association
               </span>
             </div>
           </div>
 
-          {/* Desktop Navigation Links (Clean 7 items) */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+          {/* Desktop Navigation Links (Clean, Prominent Spacing & Active States) */}
+          <nav className={`hidden lg:flex items-center transition-all duration-500 ${scrolled ? 'gap-1 xl:gap-2' : 'gap-1.5 xl:gap-3'}`}>
             {navLinks.map((link) => {
               const isActive = activePage === link.id;
               if (link.isSpecial) {
@@ -131,10 +157,12 @@ export default function Navbar({ activePage, setActivePage, onOpenMetaSummit }) 
                   <button
                     key={link.id}
                     onClick={() => handleNavClick(link.id)}
-                    className={`btn-tech relative px-4 py-1.5 rounded-full text-xs font-bold tracking-wide transition-all duration-200 ${
+                    className={`btn-tech relative rounded-full font-bold tracking-wide transition-all duration-300 ml-1 ${
+                      scrolled ? 'px-4 py-2 text-xs' : 'px-5 py-2.5 text-xs xl:text-sm'
+                    } ${
                       isActive
-                        ? 'bg-[#7D1730] text-white shadow-sm'
-                        : 'bg-[#FAF4E6] text-[#7D1730] hover:bg-[#7D1730] hover:text-white border border-[#C8A962]/40'
+                        ? 'bg-[#7D1730] text-white shadow-gold-glow border border-[#E5B842]/60'
+                        : 'bg-[#FAF4E6] text-[#7D1730] hover:bg-[#7D1730] hover:text-white border border-[#C8A962]/50 shadow-sm'
                     }`}
                   >
                     <Sparkles className="w-3.5 h-3.5 text-[#C99A2E]" />
@@ -147,7 +175,9 @@ export default function Navbar({ activePage, setActivePage, onOpenMetaSummit }) 
                 <button
                   key={link.id}
                   onClick={() => handleNavClick(link.id)}
-                  className={`relative px-3.5 py-2 rounded-xl text-xs xl:text-sm font-semibold transition-all duration-200 flex items-center justify-center ${
+                  className={`relative rounded-xl font-semibold transition-all duration-200 flex items-center justify-center ${
+                    scrolled ? 'px-3 py-1.5 text-xs xl:text-sm' : 'px-3.5 py-2 text-sm xl:text-[15px]'
+                  } ${
                     isActive
                       ? 'text-[#071A3A] font-bold bg-[#FAF4E6] border border-[#C8A962]/30 shadow-sm'
                       : 'text-[#5A6B85] hover:text-[#071A3A] hover:bg-[#FAF7F0]'
@@ -155,18 +185,18 @@ export default function Navbar({ activePage, setActivePage, onOpenMetaSummit }) 
                 >
                   <span>{link.label}</span>
                   {isActive && (
-                    <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-[#C99A2E] rounded-full"></span>
+                    <span className="absolute bottom-0.5 left-3 right-3 h-0.5 bg-[#C99A2E] rounded-full"></span>
                   )}
                 </button>
               );
             })}
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Action & Menu Toggle */}
           <div className="lg:hidden flex items-center gap-2">
             <button
               onClick={() => handleNavClick('meta-summit')}
-              className="px-3 py-1.5 rounded-full bg-[#071A3A] text-white border border-[#C8A962]/40 text-xs font-bold flex items-center gap-1.5"
+              className="px-3.5 py-1.5 rounded-full bg-[#071A3A] text-white border border-[#C8A962]/40 text-xs font-bold flex items-center gap-1.5 shadow-sm"
             >
               <Sparkles className="w-3 h-3 text-[#C99A2E]" />
               <span>Summit</span>
@@ -185,7 +215,7 @@ export default function Navbar({ activePage, setActivePage, onOpenMetaSummit }) 
 
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 top-[88px] z-50 bg-[#F5F0E3] lg:hidden flex flex-col p-6 animate-fade-in overflow-y-auto border-t border-[#E5DDCB]">
+        <div className="fixed inset-0 top-[100px] z-50 bg-[#F5F0E3] lg:hidden flex flex-col p-6 animate-fade-in overflow-y-auto border-t border-[#E5DDCB]">
           <div className="flex flex-col gap-2">
             {navLinks.map((link) => {
               const isActive = activePage === link.id;
@@ -195,7 +225,7 @@ export default function Navbar({ activePage, setActivePage, onOpenMetaSummit }) 
                   onClick={() => handleNavClick(link.id)}
                   className={`flex items-center justify-between p-3.5 rounded-2xl text-left font-heading text-base font-bold transition-all ${
                     link.isSpecial
-                      ? 'bg-[#FAF4E6] text-[#7D1730] border border-[#C8A962]/50'
+                      ? 'bg-[#FAF4E6] text-[#7D1730] border border-[#C8A962]/50 shadow-sm'
                       : isActive
                       ? 'bg-[#071A3A] text-white'
                       : 'text-[#071A3A] hover:bg-[#FAF7F0]'

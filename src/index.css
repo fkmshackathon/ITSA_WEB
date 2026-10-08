@@ -172,6 +172,25 @@
   100% { transform: translateX(200%); }
 }
 
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marqueeReverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+@keyframes timelineGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(201, 154, 46, 0.4), inset 0 0 10px rgba(201, 154, 46, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(201, 154, 46, 0.75), inset 0 0 16px rgba(201, 154, 46, 0.4);
+  }
+}
+
 /* Animation Helper Classes */
 .animate-fade-in {
   animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -208,6 +227,21 @@
 .animate-circuit-signal {
   stroke-dasharray: 8 12;
   animation: circuitSignal 4s linear infinite;
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+
+.animate-marquee:hover,
+.marquee-container:hover .animate-marquee {
+  animation-play-state: paused !important;
+}
+
+.animate-timeline-glow {
+  animation: timelineGlow 3s ease-in-out infinite;
 }
 
 /* Interactive Button Styling */
