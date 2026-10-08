@@ -46,9 +46,9 @@ export default function DepartmentHierarchy() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 reveal-init">
-          <div className="inline-flex items-center gap-2 text-[11px] font-mono font-bold tracking-widest text-[#9E741B] uppercase bg-[#FAF4E6] px-3.5 py-1 rounded-full border border-[#C8A962]/40 shadow-sm">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-[#9E741B] uppercase bg-[#FAF4E6] px-3.5 py-1 rounded-full border border-[#C8A962]/40 shadow-sm">
             <Cpu className="w-3.5 h-3.5 text-[#C99A2E]" />
-            <span>INSTITUTIONAL LINEAGE</span>
+            <span>03 / INSTITUTIONAL LINEAGE</span>
           </div>
           <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-[#071A3A] tracking-tight mt-3">
             Grounded in Academic Excellence
@@ -78,7 +78,7 @@ export default function DepartmentHierarchy() {
                   }`}>
                     {step.icon}
                   </div>
-                  <span className={`font-mono text-[10px] font-bold uppercase px-2.5 py-1 rounded-md ${
+                  <span className={`text-[11px] font-bold uppercase px-2.5 py-1 rounded-lg ${
                     step.highlight
                       ? 'bg-[#FAF4E6] text-[#071A3A] border border-[#C8A962]'
                       : 'bg-[#FAF7F0] text-[#5A6B85] border border-[#E5DDCB]'
@@ -87,7 +87,7 @@ export default function DepartmentHierarchy() {
                   </span>
                 </div>
 
-                <div className="text-[10px] font-mono font-bold text-[#9E741B] uppercase mb-1">
+                <div className="text-[11px] font-bold text-[#9E741B] uppercase mb-1">
                   Level {step.level} • {step.tag}
                 </div>
 
@@ -111,7 +111,7 @@ export default function DepartmentHierarchy() {
               </div>
 
               {/* Bottom Step Indicator */}
-              <div className={`pt-4 mt-5 border-t flex items-center justify-between text-[11px] font-mono ${
+              <div className={`pt-4 mt-5 border-t flex items-center justify-between text-xs font-semibold ${
                 step.highlight ? 'border-white/15 text-[#E5B842]' : 'border-[#E5DDCB] text-[#5A6B85]'
               }`}>
                 <span>Tier 0{idx + 1}</span>

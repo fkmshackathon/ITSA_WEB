@@ -27,7 +27,8 @@ export default function GalleryPreview({ onOpenLightbox, onNavigateGallery }) {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 reveal-init">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF4E6] border border-[#C8A962]/40 text-xs font-mono font-bold text-[#9E741B] uppercase tracking-wider mb-3 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF4E6] border border-[#C8A962]/40 text-xs font-semibold text-[#9E741B] uppercase tracking-wider mb-3 shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C99A2E] animate-pulse"></span>
               <span>08 / VISUAL ARCHIVE</span>
             </div>
             <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#071A3A] tracking-tight">
@@ -67,7 +68,7 @@ export default function GalleryPreview({ onOpenLightbox, onNavigateGallery }) {
               <div className="absolute inset-0 bg-gradient-to-t from-[#071A3A] via-[#071A3A]/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
               
               <div className="absolute top-4 left-4 z-20">
-                <span className="text-xs font-mono font-bold uppercase tracking-wider bg-[#FAF4E6] text-[#071A3A] px-3 py-1 rounded-full border border-[#C8A962]">
+                <span className="text-xs font-semibold uppercase tracking-wider bg-[#FAF4E6] text-[#071A3A] px-3 py-1 rounded-full border border-[#C8A962]">
                   {previewItems[0].category}
                 </span>
               </div>
@@ -80,7 +81,7 @@ export default function GalleryPreview({ onOpenLightbox, onNavigateGallery }) {
                 <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-white mb-1.5 leading-snug">
                   {previewItems[0].caption}
                 </h3>
-                <p className="text-xs text-white/80 line-clamp-2 max-w-lg">
+                <p className="text-xs text-white/80 line-clamp-2 max-w-lg font-normal">
                   {previewItems[0].details}
                 </p>
               </div>
@@ -105,7 +106,7 @@ export default function GalleryPreview({ onOpenLightbox, onNavigateGallery }) {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071A3A] via-[#071A3A]/40 to-transparent opacity-75 group-hover:opacity-85 transition-opacity"></div>
                 
                 <div className="absolute top-3 left-3 z-20">
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider bg-[#FAF4E6] text-[#071A3A] px-2.5 py-0.5 rounded-full border border-[#C8A962]">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider bg-[#FAF4E6] text-[#071A3A] px-2.5 py-0.5 rounded-lg border border-[#C8A962]">
                     {item.category}
                   </span>
                 </div>

@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Award, ShieldCheck, BookOpen, Sparkles, Activity } from 'lucide-react';
+import { ArrowRight, Award, ShieldCheck, BookOpen } from 'lucide-react';
 import { CircuitCorner, HeroTechVisual } from './TechnicalDecoration';
 
 export default function Hero({ onExploreAbout, onExploreEvents, onExploreSummit }) {
-  const [activeFocusIdx, setActiveFocusIdx] = useState(0);
-  const focusAreas = ['Applied AI & ML', 'Cloud Architecture', 'Cyber Defense', 'Distributed Web', 'IoT Systems'];
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveFocusIdx((prev) => (prev + 1) % focusAreas.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [focusAreas.length]);
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const heroHeight = window.innerHeight * 0.8;
+      const progress = Math.min(1, Math.max(0, scrollY / heroHeight));
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <section className="relative overflow-hidden bg-[#F5F0E3] pt-10 pb-16 md:pt-16 md:pb-24 border-b border-[#E5DDCB]">
+    <section className="relative overflow-hidden bg-[#F5F0E3] pt-12 pb-20 md:pt-20 md:pb-28 border-b border-[#E5DDCB]">
       
       {/* Background Engineering Grid */}
       <div className="absolute inset-0 bg-cream-grid opacity-70 pointer-events-none"></div>
@@ -40,26 +44,18 @@ export default function Hero({ onExploreAbout, onExploreEvents, onExploreSummit 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
-          {/* Left Column: Staggered Entrance Content (6 cols) */}
+          {/* Left Column: Editorial Hierarchy (6 cols) */}
           <div className="lg:col-span-6 flex flex-col items-start">
             
-            {/* Step 1: Tracking Label + ITSA Live Radar Widget */}
-            <div className="flex flex-wrap items-center gap-2 mb-6 animate-fade-in-up" style={{ animationDelay: '50ms' }}>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 border border-[#E5DDCB] text-[11px] sm:text-xs font-mono font-bold text-[#071A3A] shadow-sm">
-                <span className="w-2 h-2 rounded-full bg-[#C99A2E] animate-pulse"></span>
-                <span className="tracking-wider uppercase">INFORMATION TECHNOLOGY STUDENTS ASSOCIATION</span>
-              </div>
-
-              {/* Creative ITSA Focus Radar Widget */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF4E6] border border-[#C8A962]/40 text-[10px] font-mono font-bold text-[#9E741B] shadow-sm">
-                <Activity className="w-3 h-3 text-[#C99A2E] animate-pulse" />
-                <span>FOCUS: {focusAreas[activeFocusIdx]}</span>
-              </div>
+            {/* Step 1: Clean Editorial Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF4E6] border border-[#C8A962]/40 text-xs font-semibold text-[#9E741B] shadow-sm mb-6 animate-fade-in-up" style={{ animationDelay: '50ms' }}>
+              <span className="w-2 h-2 rounded-full bg-[#C99A2E] animate-pulse"></span>
+              <span className="tracking-wide uppercase">Department of Information Technology</span>
             </div>
 
             {/* Step 2: Main Headline */}
             <h1 
-              className="font-heading font-extrabold text-4xl sm:text-5xl xl:text-6xl tracking-tight text-[#071A3A] leading-[1.08] mb-5 animate-fade-in-up"
+              className="font-heading font-extrabold text-4xl sm:text-5xl xl:text-6xl tracking-tight text-[#071A3A] leading-[1.08] mb-6 animate-fade-in-up"
               style={{ animationDelay: '150ms' }}
             >
               Empowering <br />
@@ -101,50 +97,50 @@ export default function Hero({ onExploreAbout, onExploreEvents, onExploreSummit 
               </button>
             </div>
 
-            {/* Step 5: Credibility Micro-Pill Matrix */}
+            {/* Step 5: Clean Institutional Metadata (Clean Typography, No Monospace Noise) */}
             <div 
-              className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-6 border-t border-[#E5DDCB] w-full animate-fade-in-up"
+              className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 border-t border-[#E5DDCB] w-full animate-fade-in-up"
               style={{ animationDelay: '450ms' }}
             >
-              <div className="flex items-center gap-2.5">
-                <div className="p-1.5 rounded-lg bg-[#FAF4E6] text-[#9E741B] border border-[#C8A962]/40">
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-xl bg-[#FAF4E6] text-[#9E741B] border border-[#C8A962]/40">
                   <Award className="w-4 h-4" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xs font-bold text-[#071A3A]">NBA Accredited</span>
-                  <span className="text-[10px] text-[#5A6B85] font-mono">B.E. IT Program</span>
+                  <span className="text-[11px] text-[#5A6B85] font-medium">B.E. IT Program</span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2.5">
-                <div className="p-1.5 rounded-lg bg-white text-[#071A3A] border border-[#E5DDCB]">
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-xl bg-white text-[#071A3A] border border-[#E5DDCB]">
                   <ShieldCheck className="w-4 h-4" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xs font-bold text-[#071A3A]">Autonomous</span>
-                  <span className="text-[10px] text-[#5A6B85] font-mono">Mumbai University</span>
+                  <span className="text-[11px] text-[#5A6B85] font-medium">Mumbai University</span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2.5 col-span-2 sm:col-span-1">
-                <div className="p-1.5 rounded-lg bg-[#FAF4E6] text-[#9E741B] border border-[#C8A962]/40">
+              <div className="flex items-center gap-3 col-span-2 sm:col-span-1">
+                <div className="p-2 rounded-xl bg-[#FAF4E6] text-[#9E741B] border border-[#C8A962]/40">
                   <BookOpen className="w-4 h-4" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xs font-bold text-[#071A3A]">Est. 2010</span>
-                  <span className="text-[10px] text-[#5A6B85] font-mono">11 Batches Graduated</span>
+                  <span className="text-[11px] text-[#5A6B85] font-medium">11 Batches Graduated</span>
                 </div>
               </div>
             </div>
 
           </div>
 
-          {/* Right Column: Hero Centerpiece with Staggered Entrance (6 cols) */}
+          {/* Right Column: Unified Hero Emblem Visual Centerpiece (6 cols) */}
           <div 
             className="lg:col-span-6 flex items-center justify-center relative animate-fade-in-up"
             style={{ animationDelay: '200ms' }}
           >
-            <HeroTechVisual />
+            <HeroTechVisual scrollProgress={scrollProgress} />
           </div>
 
         </div>

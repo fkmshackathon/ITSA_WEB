@@ -122,7 +122,7 @@ export default function Navbar({ activePage, setActivePage, onOpenMetaSummit }) 
 
             {/* Text Lockup with Dynamic Proportions */}
             <div className="flex flex-col justify-center">
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-2">
                 <span 
                   className={`font-heading font-extrabold tracking-tight text-[#071A3A] transition-all duration-500 ${
                     scrolled ? 'text-base sm:text-lg' : 'text-lg sm:text-2xl'
@@ -130,11 +130,6 @@ export default function Navbar({ activePage, setActivePage, onOpenMetaSummit }) 
                 >
                   ITSA SLRTCE
                 </span>
-                {!scrolled && (
-                  <span className="hidden xl:inline-block px-2 py-0.5 rounded-md bg-[#FAF4E6] border border-[#C8A962]/40 text-[10px] font-mono font-bold text-[#9E741B]">
-                    NODE 01
-                  </span>
-                )}
               </div>
               <span 
                 className={`text-[#5A6B85] font-medium tracking-tight transition-all duration-500 ${

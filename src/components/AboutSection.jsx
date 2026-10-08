@@ -53,9 +53,10 @@ export default function AboutSection({ onNavigateAbout }) {
           <div className="lg:col-span-6 flex flex-col items-start reveal-init">
             
             {/* Small Section Label */}
-            <span className="text-xs font-mono font-bold tracking-widest text-[#9E741B] uppercase mb-2">
-              ABOUT ITSA
-            </span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF4E6] border border-[#C8A962]/40 text-xs font-semibold text-[#9E741B] uppercase tracking-wider mb-3 shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C99A2E] animate-pulse"></span>
+              <span>02 / ABOUT ITSA</span>
+            </div>
 
             {/* Large Section Heading */}
             <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#071A3A] tracking-tight leading-tight mb-5">
@@ -77,10 +78,10 @@ export default function AboutSection({ onNavigateAbout }) {
                   <div className="font-heading font-extrabold text-3xl sm:text-4xl text-[#E5B842] tracking-tight mb-1">
                     240+
                   </div>
-                  <div className="text-xs font-bold text-white/90 uppercase tracking-wide font-mono">
+                  <div className="text-xs font-bold text-white/90 uppercase tracking-wide">
                     Annual Intake
                   </div>
-                  <div className="text-[10px] text-white/60 mt-1">
+                  <div className="text-[11px] text-white/60 mt-1">
                     Undergraduate Engineers
                   </div>
                 </div>
@@ -93,10 +94,10 @@ export default function AboutSection({ onNavigateAbout }) {
                   <div className="font-heading font-extrabold text-3xl sm:text-4xl text-[#E5B842] tracking-tight mb-1">
                     15+
                   </div>
-                  <div className="text-xs font-bold text-white/90 uppercase tracking-wide font-mono">
+                  <div className="text-xs font-bold text-white/90 uppercase tracking-wide">
                     Tech Events
                   </div>
-                  <div className="text-[10px] text-white/60 mt-1">
+                  <div className="text-[11px] text-white/60 mt-1">
                     Symposia & Sprints
                   </div>
                 </div>
@@ -136,7 +137,7 @@ export default function AboutSection({ onNavigateAbout }) {
                     <h3 className="font-heading font-extrabold text-lg sm:text-xl text-[#071A3A] group-hover:text-[#9E741B] transition-colors">
                       {pill.title}
                     </h3>
-                    <span className="font-mono text-[10px] font-bold text-[#5A6B85] bg-white px-2 py-0.5 rounded border border-[#E5DDCB]">
+                    <span className="text-[11px] font-bold text-[#5A6B85] bg-white px-2 py-0.5 rounded border border-[#E5DDCB]">
                       0{idx + 1}
                     </span>
                   </div>

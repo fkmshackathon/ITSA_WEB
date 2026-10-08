@@ -1,12 +1,12 @@
 import React from 'react';
-import { Award, ArrowRight, Mail, GraduationCap, ChevronRight, Sparkles } from 'lucide-react';
+import { Award, ArrowRight, Mail, GraduationCap, ChevronRight } from 'lucide-react';
 import { facultyList } from '../data/facultyData';
 import { CircuitCorner } from './TechnicalDecoration';
 
 export default function FacultySpotlight({ onSelectFaculty, onNavigateFaculty }) {
-  // Use all prominent featured advisors and professors
+  // Prominent featured advisors and mentors
   const advisors = facultyList.slice(0, 10);
-  // Duplicate array for seamless infinite marquee loop
+  // Duplicate array for continuous marquee loop
   const duplicatedAdvisors = [...advisors, ...advisors];
 
   return (
@@ -28,7 +28,7 @@ export default function FacultySpotlight({ onSelectFaculty, onNavigateFaculty })
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF4E6] border border-[#C8A962]/40 text-xs font-mono font-bold text-[#9E741B] uppercase tracking-wider mb-3 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF4E6] border border-[#C8A962]/40 text-xs font-semibold text-[#9E741B] uppercase tracking-wider mb-3 shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C99A2E] animate-pulse"></span>
               <span>04 / ACADEMIC LEADERSHIP</span>
             </div>
@@ -36,7 +36,7 @@ export default function FacultySpotlight({ onSelectFaculty, onNavigateFaculty })
               Our Faculty Advisors & Mentors
             </h2>
             <p className="text-sm sm:text-base text-[#5A6B85] mt-2 max-w-2xl font-normal">
-              The Guardians of ITSA. Guided by 20+ research-focused professors with extensive industrial and pedagogical mastery. Hover on any card to pause stream.
+              The Guardians of ITSA. Guided by 20+ dedicated faculty mentors with advanced research pedagogies. Hover on any card to pause stream.
             </p>
           </div>
 
@@ -73,8 +73,6 @@ export default function FacultySpotlight({ onSelectFaculty, onNavigateFaculty })
               ? "R&D Dean"
               : faculty.roleCategory || "Faculty Mentor";
 
-            const codeId = `FAC-${String((idx % advisors.length) + 1).padStart(2, '0')}`;
-
             return (
               <div
                 key={`${faculty.id}-${idx}`}
@@ -84,13 +82,10 @@ export default function FacultySpotlight({ onSelectFaculty, onNavigateFaculty })
                 {/* Gold Top Ambient Glow */}
                 <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-[#C99A2E]/15 to-transparent pointer-events-none"></div>
 
-                {/* Card Top: Code + Status */}
-                <div className="flex items-center justify-between pb-3.5 border-b border-white/10 text-[10px] font-mono text-white/60 relative z-10">
-                  <span className="text-[#E5B842] font-bold">{codeId}</span>
-                  <span className="flex items-center gap-1.5 text-emerald-400">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span>ACTIVE MENTOR</span>
-                  </span>
+                {/* Card Top: Role Tag */}
+                <div className="flex items-center justify-between pb-3.5 border-b border-white/10 text-xs text-white/70 relative z-10 font-semibold">
+                  <span className="text-[#E5B842] uppercase tracking-wider">{roleBadge}</span>
+                  <span className="text-white/50 text-[11px]">SLRTCE IT</span>
                 </div>
 
                 {/* Central Circular Portrait with Gold Border Frame */}
@@ -111,11 +106,6 @@ export default function FacultySpotlight({ onSelectFaculty, onNavigateFaculty })
                       )}
                     </div>
                   </div>
-
-                  {/* Role Badge directly below photo */}
-                  <div className="mt-3.5 px-3 py-0.5 rounded-full bg-[#FAF4E6] text-[#071A3A] font-mono text-[10px] sm:text-[11px] font-extrabold border border-[#C8A962] shadow-sm tracking-wide">
-                    {roleBadge}
-                  </div>
                 </div>
 
                 {/* Faculty Name & Designation */}
@@ -126,19 +116,19 @@ export default function FacultySpotlight({ onSelectFaculty, onNavigateFaculty })
                   <p className="text-[11px] sm:text-xs text-white/75 font-medium line-clamp-1">
                     {faculty.designation}
                   </p>
-                  <div className="text-[10px] font-mono text-[#E5B842] mt-1">
-                    {faculty.experience?.total || "15+ Years"} Exp • {faculty.publications || "Research Scholar"}
+                  <div className="text-[11px] text-[#E5B842] font-semibold mt-1">
+                    {faculty.experience?.total || "15+ Years"} Experience
                   </div>
                 </div>
 
                 {/* Bottom Action */}
                 <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs relative z-10">
-                  <div className="flex items-center gap-1 text-[#E5B842]">
+                  <div className="flex items-center gap-1.5 text-[#E5B842] font-medium">
                     <Award className="w-3.5 h-3.5" />
-                    <span className="text-[10px] font-mono">SLRTCE IT</span>
+                    <span>Research Mentor</span>
                   </div>
-                  <span className="text-xs font-mono font-bold text-white group-hover:text-[#E5B842] transition-colors flex items-center gap-1">
-                    <span>Inspect Dossier</span>
+                  <span className="text-xs font-bold text-white group-hover:text-[#E5B842] transition-colors flex items-center gap-1">
+                    <span>View Profile</span>
                     <ChevronRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
@@ -168,19 +158,19 @@ export default function FacultySpotlight({ onSelectFaculty, onNavigateFaculty })
               <span className="text-xs text-[#9E741B] font-bold">
                 Associate Professor & Head of Department
               </span>
-              <span className="text-[11px] text-[#5A6B85] font-mono mt-0.5">
+              <span className="text-[11px] text-[#5A6B85] font-medium mt-0.5">
                 31 Years Combined Experience
               </span>
             </div>
 
             <div className="lg:col-span-9 flex flex-col justify-center">
-              <span className="text-xs font-mono font-bold text-[#9E741B] uppercase tracking-wider mb-2">
+              <span className="text-xs font-bold text-[#9E741B] uppercase tracking-wider mb-2">
                 Message from the Department Head
               </span>
               <p className="text-xs sm:text-sm text-[#071A3A] font-medium leading-relaxed italic mb-4">
                 "In today's digital age, Information Technology plays a pivotal role in shaping industries. At SLRTCE Department of IT, we deliver high-quality, industry-relevant education with an unwavering focus on academic excellence, outcome-based Disha pedagogy, and student-driven innovation through ITSA."
               </p>
-              <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-[#5A6B85]">
+              <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-[#5A6B85]">
                 <span>• NBA-Accredited Curriculum</span>
                 <span>• 95%+ Result Average</span>
                 <span>• 40+ Research Papers</span>

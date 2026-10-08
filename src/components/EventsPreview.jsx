@@ -31,7 +31,8 @@ export default function EventsPreview({ onSelectEvent, onNavigateEvents }) {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 reveal-init">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF4E6] border border-[#C8A962]/40 text-xs font-mono font-bold text-[#9E741B] uppercase tracking-wider mb-3 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF4E6] border border-[#C8A962]/40 text-xs font-semibold text-[#9E741B] uppercase tracking-wider mb-3 shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C99A2E] animate-pulse"></span>
               <span>07 / EVENT INITIATIVES</span>
             </div>
             <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-[#071A3A] tracking-tight">
@@ -92,7 +93,7 @@ export default function EventsPreview({ onSelectEvent, onNavigateEvents }) {
                   />
                   
                   <div className="absolute top-3 left-3 flex items-center gap-2">
-                    <span className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-lg backdrop-blur-md ${
+                    <span className={`text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-lg backdrop-blur-md ${
                       event.isFlagship
                         ? 'bg-[#7D1730]/90 text-[#E5B842] border border-[#C99A2E]/50'
                         : 'bg-[#071A3A]/90 text-white border border-white/20'
@@ -102,7 +103,7 @@ export default function EventsPreview({ onSelectEvent, onNavigateEvents }) {
                   </div>
 
                   <div className="absolute top-3 right-3">
-                    <span className={`text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg backdrop-blur-md ${
+                    <span className={`text-[11px] font-semibold px-2.5 py-1 rounded-lg backdrop-blur-md ${
                       event.status === 'Upcoming'
                         ? 'bg-emerald-900/90 text-emerald-200 border border-emerald-500/40'
                         : 'bg-[#071A3A]/80 text-[#FAF7F0]'
@@ -113,8 +114,8 @@ export default function EventsPreview({ onSelectEvent, onNavigateEvents }) {
 
                   <div className="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-[#071A3A] via-[#071A3A]/60 to-transparent"></div>
                   
-                  <div className="absolute bottom-3 left-3 right-3 text-white flex items-center justify-between text-xs font-mono">
-                    <div className="flex items-center gap-1.5 text-[#E5B842] font-bold">
+                  <div className="absolute bottom-3 left-3 right-3 text-white flex items-center justify-between text-xs">
+                    <div className="flex items-center gap-1.5 text-[#E5B842] font-semibold">
                       <Calendar className="w-3.5 h-3.5" />
                       <span>{event.date}</span>
                     </div>
@@ -127,7 +128,7 @@ export default function EventsPreview({ onSelectEvent, onNavigateEvents }) {
                     {event.title}
                   </h3>
                   
-                  <p className="text-xs sm:text-sm text-[#5A6B85] leading-relaxed line-clamp-2 mb-4">
+                  <p className="text-xs sm:text-sm text-[#5A6B85] leading-relaxed line-clamp-2 mb-4 font-normal">
                     {event.shortDesc}
                   </p>
 
@@ -137,7 +138,7 @@ export default function EventsPreview({ onSelectEvent, onNavigateEvents }) {
                       {event.tracks.slice(0, 3).map((tr, tIdx) => (
                         <span
                           key={tIdx}
-                          className="text-[10px] font-mono bg-[#FAF4E6] text-[#9E741B] px-2 py-0.5 rounded border border-[#C8A962]/30"
+                          className="text-[11px] font-medium bg-[#FAF4E6] text-[#9E741B] px-2.5 py-0.5 rounded-lg border border-[#C8A962]/30"
                         >
                           {tr}
                         </span>
@@ -149,8 +150,8 @@ export default function EventsPreview({ onSelectEvent, onNavigateEvents }) {
 
               {/* Bottom Card Footer */}
               <div className="p-6 pt-0">
-                <div className="pt-3 border-t border-[#E5DDCB] flex items-center justify-between text-xs font-mono">
-                  <div className="flex items-center gap-1.5 text-[#5A6B85] text-[11px] truncate max-w-[60%]">
+                <div className="pt-3 border-t border-[#E5DDCB] flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-1.5 text-[#5A6B85] text-[11px] truncate max-w-[60%] font-medium">
                     <MapPin className="w-3.5 h-3.5 flex-shrink-0 text-[#C99A2E]" />
                     <span className="truncate">{event.venue.split(',')[0]}</span>
                   </div>

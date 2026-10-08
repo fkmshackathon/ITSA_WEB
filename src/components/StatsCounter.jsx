@@ -27,14 +27,15 @@ export default function StatsCounter() {
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 pb-4 border-b border-[#E5DDCB] gap-4 reveal-init">
           <div>
-            <span className="text-[11px] font-mono font-bold tracking-widest text-[#9E741B] uppercase">
-              02 / DEPARTMENT METRICS
-            </span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#FAF4E6] border border-[#C8A962]/40 text-xs font-semibold text-[#9E741B] uppercase tracking-wider mb-2 shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C99A2E] animate-pulse"></span>
+              <span>03 / DEPARTMENT METRICS</span>
+            </div>
             <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-[#071A3A] tracking-tight mt-1">
               Verified Department Figures
             </h3>
           </div>
-          <div className="flex items-center gap-2 text-xs text-[#5A6B85] font-mono">
+          <div className="flex items-center gap-2 text-xs text-[#5A6B85] font-medium">
             <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
             <span>Source: SLRTCE Department of IT</span>
           </div>
@@ -52,7 +53,7 @@ export default function StatsCounter() {
                 <span className="p-1.5 rounded-lg bg-[#FAF4E6] border border-[#C8A962]/40 group-hover:scale-105 transition-transform">
                   {statIcons[idx]}
                 </span>
-                <span className="text-[10px] font-mono font-bold text-[#5A6B85]">
+                <span className="text-[11px] font-bold text-[#5A6B85]">
                   0{idx + 1}
                 </span>
               </div>
@@ -80,7 +81,7 @@ export default function StatsCounter() {
               <TrendingUp className="w-5 h-5" />
             </div>
             <div>
-              <span className="text-xs font-bold text-[#E5B842] uppercase font-mono tracking-wider">
+              <span className="text-xs font-bold text-[#E5B842] uppercase tracking-wider">
                 Excellence Track Record
               </span>
               <p className="text-xs text-[#FAF7F0]/90 font-medium mt-0.5">
@@ -88,7 +89,7 @@ export default function StatsCounter() {
               </p>
             </div>
           </div>
-          <span className="text-xs font-mono font-bold text-[#071A3A] whitespace-nowrap bg-[#FAF4E6] px-3.5 py-1.5 rounded-lg border border-[#C8A962]/50 shadow-sm">
+          <span className="text-xs font-bold text-[#071A3A] whitespace-nowrap bg-[#FAF4E6] px-3.5 py-1.5 rounded-lg border border-[#C8A962]/50 shadow-sm">
             AICTE & NBA Aligned
           </span>
         </div>
