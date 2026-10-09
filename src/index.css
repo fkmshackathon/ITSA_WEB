@@ -1,0 +1,286 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Reference-Accurate Brand Palette: Cream + Deep Navy + Muted Gold + Burgundy */
+    --color-bg-base: #F5F0E3;
+    --color-bg-paper: #FAF7F0;
+    --color-bg-card-cream: #FCFAF6;
+    --color-bg-surface: #FFFFFF;
+    
+    --color-navy-primary: #071A3A;
+    --color-navy-dark: #051329;
+    --color-navy-card: #0B1E40;
+    --color-navy-surface: #0F2752;
+    
+    --color-gold-base: #C99A2E;
+    --color-gold-light: #E5B842;
+    --color-gold-muted: #D4A838;
+    --color-gold-deep: #9E741B;
+    --color-gold-pill: #FAF4E6;
+    
+    --color-burgundy-accent: #7D1730;
+    --color-burgundy-dark: #581220;
+    --color-burgundy-light: #9B283E;
+    
+    --color-text-navy: #071A3A;
+    --color-text-body: #323F52;
+    --color-text-muted: #6B7B95;
+    --color-text-light: #FAF7F0;
+    
+    --color-border-cream: #E5DDCB;
+    --color-border-navy: rgba(7, 26, 58, 0.15);
+    --color-border-gold: rgba(201, 154, 46, 0.4);
+    
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-heading: 'Manrope', 'Plus Jakarta Sans', sans-serif;
+    --font-editorial: 'Instrument Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-base);
+    color: var(--color-text-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.025em;
+    color: var(--color-text-navy);
+  }
+}
+
+/* Background Textures */
+.bg-cream-grid {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(7, 26, 58, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(7, 26, 58, 0.04) 1px, transparent 1px);
+}
+
+.bg-navy-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(201, 154, 46, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(201, 154, 46, 0.07) 1px, transparent 1px);
+}
+
+/* Reference Card Styling & Shadows */
+.shadow-tech-card {
+  box-shadow: 0 4px 20px -2px rgba(7, 26, 58, 0.08), 0 2px 6px -1px rgba(7, 26, 58, 0.04);
+}
+
+.shadow-tech-card-hover {
+  box-shadow: 0 16px 36px -6px rgba(7, 26, 58, 0.14), 0 6px 16px -2px rgba(7, 26, 58, 0.06);
+}
+
+.shadow-navy-card {
+  box-shadow: 0 12px 32px -4px rgba(5, 19, 41, 0.6), 0 0 0 1px rgba(201, 154, 46, 0.2);
+}
+
+.shadow-navy-card-glow {
+  box-shadow: 0 16px 40px -4px rgba(5, 19, 41, 0.7), 0 0 24px rgba(201, 154, 46, 0.28);
+}
+
+.shadow-gold-glow {
+  box-shadow: 0 8px 24px -4px rgba(201, 154, 46, 0.35);
+}
+
+/* Smooth Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F0E3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D8CEBC;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #071A3A;
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(24px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinReverseSlow {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes logoBreathe {
+  0%, 100% { 
+    transform: scale(1);
+    filter: drop-shadow(0 0 12px rgba(201, 154, 46, 0.25));
+  }
+  50% { 
+    transform: scale(1.035);
+    filter: drop-shadow(0 0 28px rgba(201, 154, 46, 0.55));
+  }
+}
+
+@keyframes pulseNode {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.35); opacity: 1; }
+}
+
+@keyframes circuitSignal {
+  0% { stroke-dashoffset: 120; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes floatSoft {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes floatSoftAlt {
+  0%, 100% { transform: translateY(0px) translateX(0px); }
+  50% { transform: translateY(-6px) translateX(3px); }
+}
+
+@keyframes shimmerGold {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+/* Animation Helper Classes */
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-spin-slow {
+  animation: spinSlow 35s linear infinite;
+}
+
+.animate-spin-reverse-slow {
+  animation: spinReverseSlow 45s linear infinite;
+}
+
+.animate-logo-breathe {
+  animation: logoBreathe 4.5s ease-in-out infinite;
+}
+
+.animate-pulse-node {
+  animation: pulseNode 2.5s ease-in-out infinite;
+}
+
+.animate-float-soft {
+  animation: floatSoft 5s ease-in-out infinite;
+}
+
+.animate-float-alt {
+  animation: floatSoftAlt 6s ease-in-out infinite;
+}
+
+.animate-circuit-signal {
+  stroke-dasharray: 8 12;
+  animation: circuitSignal 4s linear infinite;
+}
+
+/* Interactive Button Styling */
+.btn-tech {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  user-select: none;
+}
+
+.btn-tech:hover {
+  transform: translateY(-2px);
+}
+
+.btn-tech:active {
+  transform: translateY(1px) scale(0.985);
+}
+
+.btn-tech svg {
+  transition: transform 0.25s ease;
+}
+
+.btn-tech:hover svg {
+  transform: translateX(3px);
+}
+
+/* Scroll Reveal Utility Classes */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Page Transition Wrapper */
+.page-transition-enter {
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Line Clamp */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Reduced Motion Overrides */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-init {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
